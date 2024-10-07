@@ -9,7 +9,7 @@ ACCV 2024 publication
 The conda environment is defined in `env.yml`.
 
 ```
-conda create --file env.yml
+conda env create --file env.yml
 conda activate dtfnet
 ```
 
@@ -66,15 +66,17 @@ python generate_movi_dataset.py from_source \
 ## Training
 
 Training is done by the `train.py` script.
-`train.sh` contains the arguments used for training the
-first pass of DTF-Net.
+`train.sh` contains the arguments used for training all 3 stages of DTF-Net.
+You will need to adapt it to your environment.
 
 A lighter model can be quickly trained with `train_light.sh`, for tests.
 
 ## Evaluation
 
+The presented checkpoint is accessible [here](https://drive.google.com/file/d/1SLH5NxiHJzbimOldKZPR7o2qkOHkctpg/view?usp=sharing).
+
 `evaluate_model.py` contains all the necessary code for inference,
-and to evaluate all models on all presented datasets.
+and to evaluate diverse methods on the presented datasets.
 You *need* the [TAPNet-TAPIR repository](https://github.com/google-deepmind/tapnet)
 (Apache 2.0 License) for dataloading and evaluation.
 To test other methods than DTF, you will need to clone
@@ -87,17 +89,17 @@ their repositories:
  - [CoTracker](https://github.com/facebookresearch/co-tracker)
 
 Most of the evaluations have used the `evaluate_all.sh` script
-(adapt paths to external repositories).
+(adapt paths to your environment).
 Videos can be generated using the `visu.sh` script.
 
 ## Acknowledgements
 
 Some parts of this code come from
 the [RAFT](https://github.com/princeton-vl/RAFT.git) repository.
-Dataset generation relies [Kubric](https://github.com/google-research/kubric).
+Dataset generation relies on [Kubric](https://github.com/google-research/kubric).
 Evaluation relies on the [TAPNet](https://github.com/google-deepmind/tapnet) benchmark.
 
-### Related works
+### Other related works
 
  - [FlowFormer](https://github.com/drinkingcoder/FlowFormer-Official)
  - [PIPs](https://github.com/aharley/pips)

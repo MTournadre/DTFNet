@@ -9,12 +9,12 @@
 LOG_DIR=runs
 MODEL_NAME=dtfnet
 DATA_ROOT=/data/kubric_dtf
-#DEVICES="cuda:0"
-DEVICES="$( echo ,${CUDA_VISIBLE_DEVICES} | sed 's/,/ cuda:/g' )"
+DEVICES="cuda:0"
+#DEVICES="$( echo ,${CUDA_VISIBLE_DEVICES} | sed 's/,/ cuda:/g' )"
 
 # First training stage: 8 frames at 256x256 (bs=8)
 python train.py \
-    --network_type dtf_net \
+    --network_type dtfnet \
     --model_name ${MODEL_NAME}_stage1 \
     --datasets_root $DATA_ROOT \
     --stage movi_e \
