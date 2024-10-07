@@ -2,7 +2,7 @@
 
 LOG_DIR=runs_trajs
 MODEL_NAME=test_simple_no-aug
-DATA_ROOT=/home/marc.tournadre/Datasets/kubric-dtf
+DATA_ROOT=/data/kubric_dtf
 DEVICE="cuda:0"
 #DEVICE="cuda:0 cuda:1"
 

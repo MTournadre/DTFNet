@@ -134,7 +134,7 @@ PYTHONPATH="$(pwd)/..:$(pwd)/../FlowFormer:$(pwd)/../FlowFormer/core" python eva
 
 
 echo " --------------- DTF: DTF-Net ------------------"
-MODEL_PATH=models/dtfnet_final.pt
+MODEL_PATH=checkpoints/dtfnet_v1.pt
 PYTHONPATH="$(pwd)/.." python evaluate_model.py \
     --model-path ${MODEL_PATH} \
     --model-archi dtfnet --iters 1 --batch-size 1 \
