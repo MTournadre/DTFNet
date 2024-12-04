@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Main Step: Edit below title -->
+    <title>Dense Trajectory Fields</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="" />
+    <meta
+      name="keywords"
+      content="Optical-Flow, Trajectory, Tracking, Motion Analysis, Video Analysis"
+    />
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://mtournadre.github.io/DTFNet" />
+
+    <!-- Favicon for different platforms -->
+    <link
+      rel="icon"
+      href="assets/icon/icon-16.png"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="assets/icon/icon-32.png"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="assets/icon/icon-70.png"
+      sizes="70x70"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="assets/icon/icon-72.png"
+      sizes="72x72"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="assets/icon/icon-96.png"
+      sizes="96x96"
+      type="image/png"
+    />
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <a href="#abstract">Abstract</a>
+      <!-- a href="#introduction">Introduction</a -->
+      <a href="#dtf">Dense Trajectory Fields</a>
+      <a href="#dtfnet">DTF-Net</a>
+      <a href="#results">Results</a>
+      <a href="#conclusion">Conclusion</a>
+      <button class="toggle-btn" onclick="toggleDarkMode()">
+        Toggle Dark Mode
+      </button>
+    </nav>
+
+    <!-- Step 1 Start: Header Part -->
+
+    <!-- 
+    Remove if not applicable
+    Edit below todo text
+    Add URL link by removing # for each authers. Link can be GitHub, LinkedIn, Google Schooler, Website or other
+    -->
+
+    <div class="header">
+      <h1>Dense Trajectory Fields: <br>Consistent and Efficient Spatio-Temporal Pixel Tracking</h1>
+      <div class="authors">
+        <p>
+          <a href="#">Marc Tournadre</a><sup>1,2</sup>,
+          <a href="#">Catherine Soladié</a><sup>1</sup>,
+          <a href="#">Nicolas Stoiber</a><sup>2</sup>,
+          <a href="#">Pierre-Yves Richard</a><sup>1</sup>
+        </p>
+        <p>
+          <sup>1</sup>CentraleSupélec, France<br>
+          <sup>2</sup>Dynamixyz - TakeTwo Interactive, France
+        </p>
+        <div class="authors-mail">
+            <p>
+              <sup>1</sup
+              ><a href="mailto:catherine.soladie@centralesupelec.fr">catherine.soladie</a>,<a href="mailto:pierre-yves.richard@centralesupelec.fr">pierre-yves.richard</a>@centralesupelec.fr<br>
+              <sup>2</sup
+              ><a href="mailto:marc.tournadre@take2games.com">marc.tournadre</a>,<a href="mailto:nicolas.stoiber@take2games.com">nicolas.stoiber</a>@take2games.com
+            </p>
+        </div>
+        <p> 17th Asian Conference on Computer Vision, ACCV 2024 (Poster)</p>
+      </div>
+    </div>
+
+    <!-- Step 1 End: Header Part -->
+    <!-- Step 2 Start: Button for links -->
+
+    <!-- 
+    Add URL links for each buttons according to name mentioned
+    Remove # and add the link
+    Add new button link if required
+    Remove this step if not applicable
+    -->
+
+    <div class="buttons">
+      <a href="#" target="_blank">Paper</a>
+      <a href="#" target="_blank">Supplemental</a>
+      <a href="https://github.com/MTournadre/DTFNet" target="_blank">Code</a>
+      <a href="https://github.com/MTournadre/DTFNet#kubric-dtf-dataset" target="_blank">Dataset</a>
+      <a href="https://drive.google.com/file/d/1SLH5NxiHJzbimOldKZPR7o2qkOHkctpg/view?usp=sharing"
+         target="_blank">Model</a>
+      <a href="#bibtex">BibTex</a>
+    </div>
+
+    <!-- Step 2 End: Button for links -->
+
+    <!-- Step 3 Start: Add your paper abstract -->
+
+    <!-- 
+    Please do not remove below H2 heading tag. Add your HTML code after H2 HTML tag or add text inside P HTML tag. 
+    Remove this step if not applicable
+    -->
+
+    <!-- Single YouTube Video -->
+    <!--div class="video-section">
+      <h3>Demo Video</h3>
+      <div class="video-container">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/ysFav0b472w?si=Rxxp3R6_tkBXAEmP"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <p>
+        TODO: This is the short explanation paragraph of the video. Add your
+        paragraph here if required
+      </p>
+    </div -->
+    <center><img src="assets/intro.png"
+         alt="Dense Trajectory Fields leverage both dense optical-flow and long-term trajectory"
+         width="700" /></center>
+
+    <div class="abstract" id="abstract">
+      <h2>Abstract</h2>
+      <p>
+    In this paper, we present <strong>Dense Trajectory Fields</strong> (DTF), a novel low-level
+    holistic approach inspired by optical-flow and trajectory methods,
+    focusing on both spatial and temporal aspects at once.
+    DTF contains the <em>dense</em> and <em>long-term</em> trajectories of all pixels from a
+    reference frame, over an entire sequence.
+    We solve it with DTF-Net, a fast and lightweight neural network,
+    comprising 3 main components:
+    <ul>
+        <li>a joint iterative refinement of <em>image</em> and <em>motion</em> features over
+            residual layers,</li>
+        <li>token-based <em>Reciprocal Attention</em> clusters and,</li>
+        <li>a <em>Refinement Network</em> that builds patch-to-patch cost-volumes around
+            salient centroid trajectories.</li>
+    </ul>
+    We extend the recent <a href="https://github.com/google-research/kubric">Kubric dataset</a> to provide
+    dense ground-truth over all pixels, to train DTF-Net.
+    Experiments show that optical-flow and trajectory methods exhibit either
+    temporal or spatial inconsistencies.
+    Conversely, DTF-Net provides a
+    better compromise while keeping faster, giving a coherent
+    motion over the entire sequence.
+      </p>
+    </div>
+
+    <!-- Step 4 Start: Add your paper introduction -->
+
+    <!-- 
+    Please do not remove below H2 heading tag. Add your HTML code after H2 HTML tag or add text inside P HTML tag. 
+    Remove this step if not applicable
+    -->
+
+    <div class="content-section" id="dtf">
+      <h2>Dense Trajectory Fields</h2>
+      <p>TODO:</p>
+    </div>
+
+    <!-- Step 4 End: Add your paper introduction -->
+
+    <!-- Step 5 Start: Add your paper methodology -->
+
+    <!-- 
+    Please do not remove below H2 heading tag. Add your HTML code after H2 HTML tag or add text inside P HTML tag. 
+    Remove this step if not applicable
+    -->
+
+    <div class="content-section" id="dtfnet">
+      <h2>DTF-Net</h2>
+      <p>TODO: </p>
+      <ul>
+        <li>TODO</li>
+        <li>TODO</li>
+      </ul>
+    </div>
+
+    <!-- Step 5 End: Add your paper methodology -->
+
+    <!-- Step 6 Start: Add your paper results -->
+
+    <!-- 
+    Please do not remove below H2 heading tag. Add your HTML code after H2 HTML tag or add text inside P HTML tag. 
+    Remove this step if not applicable
+    Below have pre-build code for:
+    -> 3 Images Carousel
+    -> 3 Videos Carousel
+    -> Single YouTube Video
+    -> YouTube Video List
+    If you do not need those, remove them.
+    How to add YouTube Video:
+    -> Go to the video page
+    -> Click Share Button and Click <> Mark
+    -> This will give <iframe></iframe> tag code
+    -> Replace below <iframe></iframe> tag with your code
+    -->
+
+    <div class="content-section" id="results">
+      <h2>Results</h2>
+      <p>TODO: Add Results</p>
+      <ul>
+        <li>TODO</li>
+        <li>TODO</li>
+      </ul>
+    </div>
+
+    <!-- 3 Images Carousel -->
+    <h3>Image Gallery</h3>
+    <div class="carousel-container" id="imageCarousel">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="assets/Photo1.jpg" alt="Slide 1" />
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/Photo2.jpg" alt="Slide 2" />
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/Photo3.jpg" alt="Slide 3" />
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/Photo4.jpg" alt="Slide 4" />
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/Photo5.jpg" alt="Slide 5" />
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/Photo6.jpg" alt="Slide 6" />
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/Photo7.jpg" alt="Slide 7" />
+        </div>
+        <div class="carousel-slide">
+          <img src="assets/Photo8.jpg" alt="Slide 8" />
+        </div>
+      </div>
+      <button class="carousel-button prev">←</button>
+      <button class="carousel-button next">→</button>
+      <div class="carousel-indicators"></div>
+    </div>
+
+    <!-- Step 6 End: Add your paper results -->
+
+    <!-- Step 7 Start: Add your paper conclusion -->
+
+    <!-- 
+    Please do not remove below H2 heading tag. Add your HTML code after H2 HTML tag or add text inside P HTML tag. 
+    Remove this step if not applicable
+    -->
+
+    <div class="content-section" id="conclusion">
+      <h2>Conclusion</h2>
+      <p>We introduce <strong>Dense Trajectory Fields</strong>, a novel approach
+         to low-level, dense and long-term motion estimation,
+         that aims to track all pixels of a reference frame over an entire sequence.
+         We propose DTF-Net, a neural architecture consisting of an
+         iterative refinement of image and motion features.
+         To efficiently alleviate the video processing, we use
+         a mechanism of reciprocal attention to build salient centroids,
+         and refine their trajectories using patch-to-patch cost-volumes.
+         We extend the existing Kubric dataset to give pixel-wise ground-truth,
+         to train our model on.
+         We test our method against existing trajectory and optical-flow
+         algorithms, and show how both behave on each other's task.
+         DTF-Net offers a fast solution
+         that exhibits a good spatial and temporal consistency.
+</p>
+    </div>
+
+    <!-- Step 7 End: Add your paper conclusion -->
+
+    <!-- Step 8 Start: Add your paper references -->
+
+    <!-- 
+    Please only edit below between CODE tags - TODOs
+    Remove this step if not applicable
+    -->
+
+    <div class="bibtex-section" id="bibtex">
+      <h2>BibTeX</h2>
+      <button class="bibtex-copy-button" onclick="copyBibTeX()">
+        Copy to Clipboard
+      </button>
+      <pre>
+        <!-- Please edit only below details -->
+        <code class="language-bibtex">
+          @inproceedings{TBD,
+            title={TBD},
+            author={TBD},
+            booktitle={TBD},
+            year={2024},
+            pages={TBD}
+          }
+        </code>
+      </pre>
+    </div>
+
+    <!-- Step 8 End: Add your paper references -->
+
+    <!-- Step 9 Start: Add your paper acknowledgement -->
+
+    <!-- 
+    Please do not remove below H2 heading tag. Add your HTML code after H2 HTML tag or add text inside P HTML tag. 
+    Remove this step if not applicable
+    -->
+
+    <div class="content-section" id="license">
+      <h2>License</h2>
+       <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/MTournadre/DTFNet">Dense Trajectory Fields</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/MTournadre">Marc Tournadre @ Dynamixyz - TakeTwo</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
+    </div>
+
+    <!-- Step 9 End: Add your paper acknowledgement -->
+
+    <div class="content-section" id="acknowledgement">
+      <h2>Acknowledgement</h2>
+      <p>Big thanks to <a href="https://github.com/indramal">Indramal</a> for his awesome website template.</p>
+    </div>
+
+    <div class="footer">
+      <!-- Step 10 Start: Edit footer -->
+      <p>© 2024 Dynamixyz - TakeTwo. All rights reserved.</p>
+      <!-- Step 10 End: Edit footer -->
+      <!-- Please do not remove below code. -->
+      <p>
+        Website template free to borrow from
+        <a
+          href="https://github.com/indramal/iNdra-GitHub-Page-Template-For-Resarch"
+          >here</a
+        >.
+      </p>
+       <div>
+          <!-- Please remove below code of page count or edit indragithubpagetemplate with your name. -->
+    <!-- img src="https://profile-counter.glitch.me/indragithubpagetemplate/count.svg" alt="Profile Counter" -->
+    ~                ~
+</div>
+
+    <!-- Do not edit below button -->
+    <button class="scrollUpBtn" id="scrollUpBtn" onclick="scrollToTop()">
+      ⬆
+    </button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
