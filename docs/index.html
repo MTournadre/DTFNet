@@ -107,8 +107,8 @@
     -->
 
     <div class="buttons">
-      <a href="#" target="_blank">Paper</a>
-      <a href="#" target="_blank">Supplemental</a>
+      <a href="https://openaccess.thecvf.com/content/ACCV2024/html/Tournadre_Dense_Trajectory_Fields_Consistent_and_Efficient_Spatio-Temporal_Pixel_Tracking_ACCV_2024_paper.html" target="_blank">Paper</a>
+      <a href="https://drive.google.com/file/d/1lGKzWjvA2Wwie5M8rO2KcXtDHMk2ssQQ/view?usp=sharing" target="_blank">Supplemental</a>
       <a href="https://github.com/MTournadre/DTFNet" target="_blank">Code</a>
       <a href="https://github.com/MTournadre/DTFNet#kubric-dtf-dataset" target="_blank">Dataset</a>
       <a href="https://drive.google.com/file/d/1SLH5NxiHJzbimOldKZPR7o2qkOHkctpg/view?usp=sharing"
@@ -185,7 +185,21 @@
 
     <div class="content-section" id="dtf">
       <h2>Dense Trajectory Fields</h2>
-      <p>TODO:</p>
+      <center><img src="assets/dtf2.png" alt="DTF: 3D motion volume" width="500" /></center>
+      <p>
+      Our novel approach, <strong>Dense Trajectory Fields</strong> (DTF), describes
+      the 2D motion of all pixels from a reference frame.
+      It is a dense motion volume, indexed by <i>t,i,j)</i>, and unifies
+      <em>optical-flow</em> and <em>trajectory</em>.
+      A brief analysis shows that this <strong>motion</strong> space and
+      the <strong>video</strong> space have different layouts,
+      hence they need to be treated separately.
+
+      Unlike existing approaches, DTF is holistic:
+      it considers all pixels at once,
+      which is more <em>efficient</em>, and leads to more <em>consistent</em> results
+      both temporally and spatially.
+      </p>
     </div>
 
     <!-- Step 4 End: Add your paper introduction -->
@@ -199,11 +213,30 @@
 
     <div class="content-section" id="dtfnet">
       <h2>DTF-Net</h2>
-      <p>TODO: </p>
-      <ul>
-        <li>TODO</li>
-        <li>TODO</li>
-      </ul>
+      <center><img src="assets/general_archi.png" alt="Global architecture" width="700" /></center>
+      <p>
+        Here is DTF-Net: a residual architecture refining in parallel <em>video</em> and <em>motion</em> embeddings.
+        Video embeddings are obtained using a simple CNN encoder to the input sequence, reducing the resolution to 1/8.
+        Motion embeddings are initialized to zero.
+        The estimated motion and visibility can be deduced anytime by applying a common <em>motion head</em>, shared accross the network.
+      </p>
+      <center><img src="assets/centroid_summarization.png" alt="Centroid Summarization" width="780" /></center>
+      <p>
+        Processing extensively all pixels would be cumbersome.
+        We consider that the motion is redundant and scattered on the video, so we can <em>/cluster</em> it,
+        through a novel process we call <strong>Centroid Summarization</strong>.
+      </p>
+      <p>
+        For each layer, we learn a set of tokens that will build attention maps <b>A</b> on the reference frame,
+        which we interpret as <em>attention clusters</em>.
+        From each cluster, we deduce one single <strong>localized centroid</strong>,
+        whose trajectory can be estimated by applying the motion head on its motion embeddings.
+        We refine its video and motion embeddings using correlations of patches around its trajectory, fed to a temporal CNN.
+        The video and motion update is applied back to the whole sequence using the <strong>reciprocal attention</strong>:
+        simply transposing the original attention <b>A</b>, keeping the same pixel-centroid affinity.
+      </p>
+      <p>We repeat these operations along 8 layers.
+      Each layer learns its own set of tokens, building its own summarization of the video.</p>
     </div>
 
     <!-- Step 5 End: Add your paper methodology -->
@@ -283,10 +316,10 @@
       <p>We introduce <strong>Dense Trajectory Fields</strong>, a novel approach
          to low-level, dense and long-term motion estimation,
          that aims to track all pixels of a reference frame over an entire sequence.
-         We propose DTF-Net, a neural architecture consisting of an
+         We propose <strong>DTF-Net</strong>, a neural architecture consisting of an
          iterative refinement of image and motion features.
          To efficiently alleviate the video processing, we use
-         a mechanism of reciprocal attention to build salient centroids,
+         a mechanism of <em>reciprocal attention</em> to build salient centroids,
          and refine their trajectories using patch-to-patch cost-volumes.
          We extend the existing Kubric dataset to give pixel-wise ground-truth,
          to train our model on.
@@ -314,12 +347,13 @@
       <pre>
         <!-- Please edit only below details -->
         <code class="language-bibtex">
-          @inproceedings{TBD,
-            title={TBD},
-            author={TBD},
-            booktitle={TBD},
-            year={2024},
-            pages={TBD}
+          @InProceedings{Tournadre_2024_DTF,
+            author    = {Tournadre, Marc and Soladi\'e, Catherine and Stoiber, Nicolas and Richard, Pierre-Yves},
+            title     = {Dense Trajectory Fields: Consistent and Efficient Spatio-Temporal Pixel Tracking},
+            booktitle = {Proceedings of the Asian Conference on Computer Vision (ACCV)},
+            month     = {December},
+            year      = {2024},
+            pages     = {2212-2230}
           }
         </code>
       </pre>
