@@ -111,8 +111,7 @@
       <a href="https://drive.google.com/file/d/1lGKzWjvA2Wwie5M8rO2KcXtDHMk2ssQQ/view?usp=sharing" target="_blank">Supplemental</a>
       <a href="https://github.com/MTournadre/DTFNet" target="_blank">Code</a>
       <a href="https://github.com/MTournadre/DTFNet#kubric-dtf-dataset" target="_blank">Dataset</a>
-      <a href="https://drive.google.com/file/d/1SLH5NxiHJzbimOldKZPR7o2qkOHkctpg/view?usp=sharing"
-         target="_blank">Model</a>
+      <a href="https://drive.google.com/file/d/1SLH5NxiHJzbimOldKZPR7o2qkOHkctpg/view?usp=sharing" target="_blank">Model</a>
       <a href="#bibtex">BibTex</a>
     </div>
 
@@ -233,10 +232,12 @@
         whose trajectory can be estimated by applying the motion head on its motion embeddings.
         We refine its video and motion embeddings using correlations of patches around its trajectory, fed to a temporal CNN.
         The video and motion update is applied back to the whole sequence using the <strong>reciprocal attention</strong>:
-        simply transposing the original attention <b>A</b>, keeping the same pixel-centroid affinity.
+        simply transposing the original attention <b>A</b> keeps the same pixel-centroid affinity.
       </p>
-      <p>We repeat these operations along 8 layers.
-      Each layer learns its own set of tokens, building its own summarization of the video.</p>
+      <p>
+        We repeat these operations along 8 layers.
+        Each layer learns its own set of tokens, building its own summarization of the video.
+      </p>
     </div>
 
     <!-- Step 5 End: Add your paper methodology -->
@@ -377,7 +378,15 @@
 
     <div class="content-section" id="acknowledgement">
       <h2>Acknowledgement</h2>
-      <p>Big thanks to <a href="https://github.com/indramal">Indramal</a> for his awesome website template.</p>
+      <p>
+        Big thanks to <a href="https://github.com/indramal">Indramal</a> for his awesome website template.
+      </p>
+      <p>
+        Parts of the code are inspired from the <a href="https://github.com/princeton-vl/RAFT.git">RAFT</a> repository.<br>
+        Data processing relies on <a href="https://github.com/google-research/kubric">Kubric</a>.<br>
+        Evaluation relies on the <a href="https://github.com/google-deepmind/tapnet">TAPNet</a> benchmark.<br>
+        Thanks to the authors for providing their code.
+      </p>
     </div>
 
     <div class="footer">
