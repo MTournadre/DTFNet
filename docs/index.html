@@ -86,10 +86,7 @@
         </p>
         <div class="authors-mail">
             <p>
-              <sup>1</sup
-              ><a href="mailto:catherine.soladie@centralesupelec.fr">catherine.soladie</a>,<a href="mailto:pierre-yves.richard@centralesupelec.fr">pierre-yves.richard</a>@centralesupelec.fr<br>
-              <sup>2</sup
-              ><a href="mailto:marc.tournadre@take2games.com">marc.tournadre</a>,<a href="mailto:nicolas.stoiber@take2games.com">nicolas.stoiber</a>@take2games.com
+              <a href="mailto:marc.tournadre@take2games.com">marc.tournadre@take2games.com</a>
             </p>
         </div>
         <p> 17th Asian Conference on Computer Vision, ACCV 2024 (Poster)</p>
@@ -184,20 +181,25 @@
 
     <div class="content-section" id="dtf">
       <h2>Dense Trajectory Fields</h2>
-      <center><img src="assets/dtf.png" alt="DTF: 3D motion volume" width="500" /></center>
+      <center><img src="assets/dtf.png" alt="DTF: 3D motion volume" width="450" /></center>
       <p>
-      Our novel approach, <strong>Dense Trajectory Fields</strong> (DTF), describes
-      the 2D motion of all pixels from a reference frame.
-      It is a dense motion volume, indexed by <i>t,i,j)</i>, and unifies
-      <em>optical-flow</em> and <em>trajectory</em>.
-      A brief analysis shows that this <strong>motion</strong> space and
-      the <strong>video</strong> space have different layouts,
-      hence they need to be treated separately.
-
-      Unlike existing approaches, DTF is holistic:
-      it considers all pixels at once,
-      which is more <em>efficient</em>, and leads to more <em>consistent</em> results
-      both temporally and spatially.
+        Our novel approach, <strong>Dense Trajectory Fields</strong> (DTF), describes
+        the 2D motion of all pixels from a reference frame.
+        It is a 3D motion volume indexed by <i>(t,i,j)</i>, that unifies
+        <em>optical-flow</em> and <em>trajectories</em>:
+        it is dense and long-term, able to handle large occlusions,
+        and can leverage temporal and spatial contexts.
+      </p>
+      <p>
+        Unlike existing approaches, DTF is holistic:
+        it considers all pixels at once,
+        which is more <em>efficient</em>, and leads to more <em>consistent</em> results
+        both temporally and spatially.
+      </p>
+      <p>
+        A brief analysis shows that this <strong>motion</strong> space and
+        the <strong>video</strong> space have different layouts,
+        hence they need to be treated separately.
       </p>
     </div>
 
@@ -212,7 +214,7 @@
 
     <div class="content-section" id="dtfnet">
       <h2>DTF-Net</h2>
-      <center><img src="assets/general_archi.png" alt="Global architecture" width="750" /></center>
+      <center><img src="assets/general_archi.png" alt="Global architecture" width="700" /></center>
       <p>
         Here is DTF-Net: a residual architecture refining in parallel <em>video</em> and <em>motion</em> embeddings.
         Video embeddings are obtained using a simple CNN encoder to the input sequence, reducing the resolution to 1/8.
@@ -223,16 +225,16 @@
       <p>
         Processing extensively all pixels would be cumbersome.
         We consider that the motion is redundant and scattered on the video, so we can <em>/cluster</em> it,
-        through a novel process we call <strong>Centroid Summarization</strong>.
+        through a process we call <strong>Centroid Summarization</strong>.
       </p>
       <p>
-        For each layer, we learn a set of tokens that will build attention maps <b>A</b> on the reference frame,
+        For each layer, we learn a set of tokens that builds attention maps <b>A</b>,
         which we interpret as <em>attention clusters</em>.
         From each cluster, we deduce one single <strong>localized centroid</strong>,
-        whose trajectory can be estimated by applying the motion head on its motion embeddings.
-        We refine its video and motion embeddings using correlations of patches around its trajectory, fed to a temporal CNN.
-        The video and motion update is applied back to the whole sequence using the <strong>reciprocal attention</strong>:
-        simply transposing the original attention <b>A</b> keeps the same pixel-centroid affinity.
+        whose trajectory can be obtained by applying the motion head on its motion embeddings.
+        We refine its video and motion embeddings using correlations of patches around its trajectory, processed by a temporal CNN.
+        The video and motion update is applied back to the whole sequence by apply using the <strong>reciprocal attention</strong>:
+        by simply transposing the original attention <b>A</b>, we keep the same pixel-centroid affinity.
       </p>
       <p>
         We repeat these operations along 8 layers.
@@ -312,6 +314,17 @@
     Remove this step if not applicable
     -->
 
+    <div class="content-section" id="limitations">
+      <h2>Limitations</h2>
+      <p>
+        For now, our method does not cross well the gap to realworld sequences,
+        lacking generalization in its ability to build complex cluster motions.
+        On some data, it may not yet be on par with specialized methods
+        on their respective tasks (trajectories &amp; optical-flow).<br>
+        As it stands, it can only be used offline.
+      </p>
+    </div>
+
     <div class="content-section" id="conclusion">
       <h2>Conclusion</h2>
       <p>We introduce <strong>Dense Trajectory Fields</strong>, a novel approach
@@ -369,15 +382,8 @@
     Remove this step if not applicable
     -->
 
-    <div class="content-section" id="license">
-      <h2>License</h2>
-       <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/MTournadre/DTFNet">Dense Trajectory Fields</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/MTournadre">Marc Tournadre @ Dynamixyz - TakeTwo</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
-    </div>
-
-    <!-- Step 9 End: Add your paper acknowledgement -->
-
     <div class="content-section" id="acknowledgement">
-      <h2>Acknowledgement</h2>
+      <h2>Acknowledgements</h2>
       <p>
         Big thanks to <a href="https://github.com/indramal">Indramal</a> for his awesome website template.
       </p>
@@ -388,6 +394,14 @@
         Thanks to the authors for providing their code.
       </p>
     </div>
+
+
+    <div class="content-section" id="license">
+      <h2>License</h2>
+       <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/MTournadre/DTFNet">Dense Trajectory Fields</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/MTournadre">Marc Tournadre @ Dynamixyz - TakeTwo</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
+    </div>
+
+    <!-- Step 9 End: Add your paper acknowledgement -->
 
     <div class="footer">
       <!-- Step 10 Start: Edit footer -->
