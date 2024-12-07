@@ -107,5 +107,14 @@ Evaluation relies on the [TAPNet](https://github.com/google-deepmind/tapnet) ben
 
 ## BibTeX
 
-TODO
+```
+@InProceedings{Tournadre_2024_DTF,
+  author    = {Tournadre, Marc and Soladi\'e, Catherine and Stoiber, Nicolas and Richard, Pierre-Yves},
+  title     = {Dense Trajectory Fields: Consistent and Efficient Spatio-Temporal Pixel Tracking},
+  booktitle = {Proceedings of the Asian Conference on Computer Vision (ACCV)},
+  month     = {December},
+  year      = {2024},
+  pages     = {2212-2230}
+}
+```
 
