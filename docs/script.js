@@ -88,11 +88,8 @@ function copyBibTeX() {
     }
 
     updateCarousel() {
-      const offset =
-        -this.currentIndex *
-        (100 / this.slidesPerView) *
-        this.slidesPerView;
-      this.track.style.transform = `translateX(${offset}%)`;
+      const offset = -this.slides[this.slidesPerView*this.currentIndex].offsetLeft;
+      this.track.style.transform = `translateX(${offset}px)`;
 
       const indicators = Array.from(this.indicators.children);
       indicators.forEach((indicator, index) => {
