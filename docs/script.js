@@ -103,21 +103,21 @@ function copyBibTeX() {
     nextSlide() {
       this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
       this.updateCarousel();
-      this.resetAutoPlay();
+      this.stopAutoPlay();
     }
 
     prevSlide() {
       this.currentIndex =
         (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
       this.updateCarousel();
-      this.resetAutoPlay();
+      this.stopAutoPlay();
     }
 
     goToSlide(index) {
       if (index !== this.currentIndex) {
         this.currentIndex = index;
         this.updateCarousel();
-        this.resetAutoPlay();
+        this.stopAutoPlay();
       }
     }
 
