@@ -30,7 +30,7 @@ function copyBibTeX() {
       this.indicators = element.querySelector(".carousel-indicators");
 
       this.currentIndex = 0;
-      this.slidesPerView = 3;
+      this.slidesPerView = 1;
       this.totalSlides = Math.ceil(this.slides.length / this.slidesPerView);
       this.interval = interval;
       this.autoPlayTimer = null;
