@@ -247,37 +247,37 @@
       <div class="carousel-container" id="imageCarousel">
         <div class="carousel-track">
           <div class="carousel-slide">
-              <video height="300" autoplay loop muted>
+              <video height="480" autoplay loop muted>
               <source src="assets/results/kubric1.webm" type="video/webm">
               Kubric 1
             </video>
           </div>
           <div class="carousel-slide">
-            <video loop>
+              <video height="480" autoplay loop muted>
               <source src="assets/results/kubric2.webm" type="video/webm">
               Kubric 2
             </video>
           </div>
           <div class="carousel-slide">
-            <video loop>
+              <video height="480" autoplay loop muted>
               <source src="assets/results/sintel-wall.webm" type="video/webm">
               Sintel Wall
             </video>
           </div>
           <div class="carousel-slide">
-            <video loop>
+              <video height="480" autoplay loop muted>
               <source src="assets/results/sintel-tiger.webm" type="video/webm">
               Sintel Tiger
             </video>
           </div>
           <div class="carousel-slide">
-            <video loop>
+              <video height="480" autoplay loop muted>
               <source src="assets/results/sintel-cave.webm" type="video/webm">
               Sintel Tiger
             </video>
           </div>
           <div class="carousel-slide">
-            <video loop>
+              <video height="480" autoplay loop muted>
               <source src="assets/results/sintel-mountain.webm" type="video/webm">
               Sintel Tiger
             </video>
@@ -287,10 +287,14 @@
         <button class="carousel-button next">→</button>
         <div class="carousel-indicators"></div>
       </div>
+      <p>
+        We show in order: reference frame with some points to track, visibility, some point trajectories (spatial slices of DTF), and the optical-flow (temporal slice of DTF).
+        By construction, DTF-Net gives smooth and coherent results.
+      </p>
       <h3>Comparisons</h3>
       <center><img src="assets/comparison.png" alt="Comparison with FlowFormer and CoTracker" width="780" /></center>
       <p>
-        Thanks to its efficient architecture, DTFNet is faster than SOTA methods, achieving over 300FPS on sequences of 512x384 (tested on RX 4090).
+        Thanks to its efficient architecture, DTFNet is faster than SOTA methods, achieving over 300FPS on sequences of 512x384 (tested on RTX 4090).
         Although DTFNet is not always the most accurate, it is the most consistent w.r.t. spatial and temporal consistency.
       </p>
     </div>
