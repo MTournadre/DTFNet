@@ -224,7 +224,7 @@
       <center><img src="assets/centroid_summarization.png" alt="Centroid Summarization" width="780" /></center>
       <p>
         Processing extensively all pixels would be cumbersome.
-        We consider that the motion is redundant and scattered on the video, so we can <em>/cluster</em> it,
+        We consider that the motion is redundant and scattered on the video, so we can <em>cluster</em> it,
         through a process we call <strong>Centroid Summarization</strong>.
       </p>
       <p>
@@ -242,67 +242,57 @@
       </p>
     </div>
 
-    <!-- Step 5 End: Add your paper methodology -->
-
-    <!-- Step 6 Start: Add your paper results -->
-
-    <!-- 
-    Please do not remove below H2 heading tag. Add your HTML code after H2 HTML tag or add text inside P HTML tag. 
-    Remove this step if not applicable
-    Below have pre-build code for:
-    -> 3 Images Carousel
-    -> 3 Videos Carousel
-    -> Single YouTube Video
-    -> YouTube Video List
-    If you do not need those, remove them.
-    How to add YouTube Video:
-    -> Go to the video page
-    -> Click Share Button and Click <> Mark
-    -> This will give <iframe></iframe> tag code
-    -> Replace below <iframe></iframe> tag with your code
-    -->
-
     <div class="content-section" id="results">
       <h2>Results</h2>
-      <p>TODO: Add Results</p>
-      <ul>
-        <li>TODO</li>
-        <li>TODO</li>
-      </ul>
-    </div>
-
-    <!-- 3 Images Carousel -->
-    <h3>Image Gallery</h3>
-    <div class="carousel-container" id="imageCarousel">
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <img src="assets/Photo1.jpg" alt="Slide 1" />
+      <div class="carousel-container" id="imageCarousel">
+        <div class="carousel-track">
+          <div class="carousel-slide">
+              <video height="300" autoplay loop muted>
+              <source src="assets/results/kubric1.webm" type="video/webm">
+              Kubric 1
+            </video>
+          </div>
+          <div class="carousel-slide">
+            <video loop>
+              <source src="assets/results/kubric2.webm" type="video/webm">
+              Kubric 2
+            </video>
+          </div>
+          <div class="carousel-slide">
+            <video loop>
+              <source src="assets/results/sintel-wall.webm" type="video/webm">
+              Sintel Wall
+            </video>
+          </div>
+          <div class="carousel-slide">
+            <video loop>
+              <source src="assets/results/sintel-tiger.webm" type="video/webm">
+              Sintel Tiger
+            </video>
+          </div>
+          <div class="carousel-slide">
+            <video loop>
+              <source src="assets/results/sintel-cave.webm" type="video/webm">
+              Sintel Tiger
+            </video>
+          </div>
+          <div class="carousel-slide">
+            <video loop>
+              <source src="assets/results/sintel-mountain.webm" type="video/webm">
+              Sintel Tiger
+            </video>
+          </div>
         </div>
-        <div class="carousel-slide">
-          <img src="assets/Photo2.jpg" alt="Slide 2" />
-        </div>
-        <div class="carousel-slide">
-          <img src="assets/Photo3.jpg" alt="Slide 3" />
-        </div>
-        <div class="carousel-slide">
-          <img src="assets/Photo4.jpg" alt="Slide 4" />
-        </div>
-        <div class="carousel-slide">
-          <img src="assets/Photo5.jpg" alt="Slide 5" />
-        </div>
-        <div class="carousel-slide">
-          <img src="assets/Photo6.jpg" alt="Slide 6" />
-        </div>
-        <div class="carousel-slide">
-          <img src="assets/Photo7.jpg" alt="Slide 7" />
-        </div>
-        <div class="carousel-slide">
-          <img src="assets/Photo8.jpg" alt="Slide 8" />
-        </div>
+        <button class="carousel-button prev">←</button>
+        <button class="carousel-button next">→</button>
+        <div class="carousel-indicators"></div>
       </div>
-      <button class="carousel-button prev">←</button>
-      <button class="carousel-button next">→</button>
-      <div class="carousel-indicators"></div>
+      <h3>Comparisons</h3>
+      <center><img src="assets/comparison.png" alt="Comparison with FlowFormer and CoTracker" width="780" /></center>
+      <p>
+        Thanks to its efficient architecture, DTFNet is faster than SOTA methods, achieving over 300FPS on sequences of 512x384 (tested on RX 4090).
+        Although DTFNet is not always the most accurate, it is the most consistent w.r.t. spatial and temporal consistency.
+      </p>
     </div>
 
     <!-- Step 6 End: Add your paper results -->
@@ -382,7 +372,7 @@
     Remove this step if not applicable
     -->
 
-    <div class="content-section" id="acknowledgement">
+    <div class="content-section" id="acknowledgements">
       <h2>Acknowledgements</h2>
       <p>
         Big thanks to <a href="https://github.com/indramal">Indramal</a> for his awesome website template.
