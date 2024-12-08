@@ -23,7 +23,7 @@ function copyBibTeX() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
   class Carousel {
-    constructor(element, interval = 3000) {
+    constructor(element, interval = 8000) {
       this.container = element;
       this.track = element.querySelector(".carousel-track");
       this.slides = Array.from(element.querySelectorAll(".carousel-slide"));
