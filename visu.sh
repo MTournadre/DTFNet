@@ -38,7 +38,7 @@ rm -rf $OUT_FOLDER/flowformer-chain 2> /dev/null
 # DTF-Net
 echo " --------------- DTF-Net ------------------"
 PYTHONPATH="$(pwd)/.." python evaluate_model.py \
-    --model-path models/reborn_final_rollback_c1352a498_final_MOVI_E.pt  \
+    --model-path models/dtfnet_v1.pt \
     --model-archi dtfnet --iters 1 --batch-size 1 \
     --downscale-max-dim 512 \
     --test-seq ${SEQ} --test-output ${OUT_FOLDER}/dtfnet \
