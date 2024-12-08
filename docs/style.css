@@ -221,7 +221,7 @@ h2 {
 .carousel-slide {
   flex: 0 0 calc(33.333% - 20px);
   margin: 0 10px;
-  height: 450px;
+  height: 345px;
 }
 
 .carousel-slide img,
